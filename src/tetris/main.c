@@ -186,8 +186,8 @@ void game_over(win game_space) {
 			if(art[i][j] > 0) {mvwaddch(game_over.window, y, x, COLOR_PAIR(art[i][j])| ' ');}
 		}
 	}
-        rendering_bold_str(game_over, 1, " GAME OVER! ", w_blue); 
-        rendering_bold_str(game_over, 2, " YOU'RE THE BEST! ", w_blue); 
+        rendering_bold_str(game_over, 1, " YOU LOSE! :( ", w_blue); 
+        rendering_bold_str(game_over, 2, " TRY AGAIN! ", w_blue); 
         wrefresh(game_over.window);
 	delwin(game_over.window);
 
@@ -432,8 +432,19 @@ void drawing_state_game(win* level, win* score, changes* state) {
         wrefresh(level->window);
 }
 
+
+void printing_record(win* record, int num) {
+	wattron(record->window, COLOR_PAIR(w_blue));
+	char str[8] = {0};
+	snprintf(str, sizeof(str), "%d", num);
+	size_t len = (strlen(str));
+        mvwprintw(record->window, record->rows/2, (record->columns-2-len)/2, " %d ", num);
+	wattroff(record->window, COLOR_PAIR(w_blue));
+	wrefresh(record->window);
+}
+
 //подготовка игрового пространства
-void preparing_game_space(win* background, win* game_space, win* score, win* level, win* preview, changes* state, win* record) {
+void preparing_game_space(win* background, win* game_space, win* score, win* level, win* preview, changes* state, win* record, int num) {
 	//создание окон
 	initializing_windows(background, game_space, score, level, preview, record);
 	//отрисовка окон
@@ -442,6 +453,7 @@ void preparing_game_space(win* background, win* game_space, win* score, win* lev
 	starting_state_game(state);
 	//отрисовка состояния игры
 	drawing_state_game(level, score, state);
+	printing_record(record, num);
 }
 
 // номер фигуры = номер цвета
@@ -745,6 +757,29 @@ void mini_minu(bool* exit, bool* restart, int* ch, win game_space) {
 	delwin(mini_menu.window);
 }
 
+
+int reading_record () {
+	int num = 0;
+	// файл чтения
+	char * filename = "record.txt";
+	// чтение из файла
+	FILE *fp = fopen(filename, "r");
+	if(fp != NULL) {
+		fscanf(fp, "%d", &num);
+		fclose(fp);
+	}
+	return num;
+}
+
+void save_record(int num) {
+	char* filename = "record.txt";
+	FILE* fp = fopen(filename, "w");
+	if(fp != NULL) {
+		fprintf(fp, "%d", num);		
+		fclose(fp);
+	}
+}
+
 int main() {
 
 	//подготовка к работе с библиотекой ncurses
@@ -754,11 +789,13 @@ int main() {
 		endwin();
 		return 0;
 	}
+	int record_score = reading_record();
+
 	//подготовка игрового пространства
 	do {
 		win background, game_space, score, level, preview, record;
 		changes state;
-		preparing_game_space(&background, &game_space, &score, &level, &preview, &state, &record);
+		preparing_game_space(&background, &game_space, &score, &level, &preview, &state, &record, record_score);
 		keypad(game_space.window, TRUE);
 
 		matrix_t figure;
@@ -787,6 +824,10 @@ int main() {
 			int num_matrix = 0;
 			if(checking_the_coordinates(&game_space, y, x, all[num_matrix])) {
 				nodelay(game_space.window, FALSE);
+				if((int)state.score > record_score) {
+					record_score = (int)state.score;
+					save_record(record_score);
+				}
 				game_over(game_space);
 				int ch = 0;
 				mini_minu(&exit, &restart, &ch, game_space);
@@ -801,6 +842,7 @@ int main() {
 					cleaning_window(score);
 				       	starting_state_game(&state);
 					drawing_state_game(&level, &score, &state);
+					printing_record(&record, record_score);
 				}
 			} else { 
 				printing_shape_and_preview(shape, &y, &x, &game_space, &preview, &figure, &num_figure);
@@ -851,11 +893,16 @@ int main() {
 							initializing_win(&record, 4, 14, 19, 30);
 							box(record.window, 0, 0);
 							rendering_str(record, 0, "record", y_b);
-							wrefresh(record.window);
+							printing_record(&record, record_score);
 						}
 						if(restart){
+							if((int)state.score > record_score) {
+								record_score = (int)state.score;
+								save_record(record_score);
+							}
 						       	starting_state_game(&state);
 							drawing_state_game(&level, &score, &state);
+							printing_record(&record, record_score);
 						}
 					}
 					if(ch == KEY_DOWN) {
