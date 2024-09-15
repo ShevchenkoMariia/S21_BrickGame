@@ -1,18 +1,19 @@
 #ifndef CLI_H
 #define CLI_H
 
+#include <math.h>
 #include <ncurses.h>
 #include <string.h>
 #include <time.h>
-#include <math.h>
-#include "tetris.h"
+
+#include "../../brick_game/tetris/tetris.h"
 
 typedef struct window {
-        int rows;
-        int columns;
-        int y;
-        int x;
-        WINDOW* window;
+  int rows;
+  int columns;
+  int y;
+  int x;
+  WINDOW* window;
 } win;
 
 extern win feild, info, arena, nextFigure, score, level, record, control;
