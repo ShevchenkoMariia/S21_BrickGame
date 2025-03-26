@@ -5,13 +5,16 @@ Summary: In this project, you need to implement the Tetris game in the C program
 # Contents
 
 - [BrickGameTetris](#brickgame-tetris)
+
    - [Contents](#contents)
    - [Introduction](#introduction)
 
 - [Chapter I](#chapter-i)
+
    - [Tetris](#tetris)
 
 - [Chapter II](#chapter-ii)
+
    - [Project Requirments](#project-requirements)
       - [Part 1. Main task](#part-1-main-task)
       - [Part 2. Bonus. Scoring and game record](#part-2-bonus-scoring-and-game-record)
@@ -54,6 +57,7 @@ You need to implement the BrickGame v1.0 aka Tetris program:
 - Follow Google Style when writing code.
 - Prepare full coverage of the library with unit tests, using the `check` library (tests must run on Darwin/Ubuntu OS). The coverage of the library with game logic with tests must be at least 80 percent.
 - The following mechanics must be present in the game:
+
    - Rotation of pieces;
    - Horizontal movement of pieces;
    - Acceleration of the piece's fall (when the button is pressed, the piece moves all the way down);
@@ -63,6 +67,7 @@ You need to implement the BrickGame v1.0 aka Tetris program:
    - All types of pieces shown in the picture below must be included in the game.
 
 - Add support for all buttons provided on the physical console for control:
+
    - Start game,
    - Pause,
    - End game,
@@ -76,7 +81,6 @@ You need to implement the BrickGame v1.0 aka Tetris program:
 - When the figure reaches the lower boundary of the board or touches another figure, it must stop. After that, the next piece, shown in the preview, is generated.
 - The library interface must match the description in materials/library-specification.md.
 - The UI must support rendering of the playing field and additional information.
-- Prepare a diagram in any format describing the FSM used (its states and all possible transitions).
 
 Pieces used:
 
