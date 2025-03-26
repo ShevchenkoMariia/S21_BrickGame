@@ -6,7 +6,6 @@ To help you navigate through the material, we have prepared a list of topics tha
 
 We will study:
 
-- finite state machines;
 - working with matrices;
 - working with files;
 - working with the GUI library.
