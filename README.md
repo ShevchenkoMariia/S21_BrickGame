@@ -1,32 +1,35 @@
 # BrickGame Tetris
-Summary: In this project, you need to implement the Tetris game in the C programming language using a structural approach.
 
-💡 [Tap here](https://new.oprosso.net/p/4cb31ec3f47a4596bc758ea1861fb624) **to leave your feedback on the project**. It's anonymous and will help our team make your educational experience better. We recommend completing the survey immediately after the project.
+Summary: In this project, you need to implement the Tetris game in the C programming language using a structural approach.
 
 # Contents
 
 - [BrickGameTetris](#brickgame-tetris)
-  - [Contents](#contents)
-  - [Introduction](#introduction)
+   - [Contents](#contents)
+   - [Introduction](#introduction)
+
 - [Chapter I](#chapter-i)
-  - [General Information](#general-information)
-    - [BrickGame](#brickgame)
-    - [History](#history)
-    - [Finite-state machines](#fine-states-machines)
-    - [Frogger](#frogger)
-    - [Tetris](#tetris)
+   - [General Information](#general-information)
+      - [BrickGame](#brickgame)
+      - [History](#history)
+      - [Finite-state machines](#fine-states-machines)
+      - [Frogger](#frogger)
+      - [Tetris](#tetris)
+
 - [Chapter II](#chapter-ii)
-  - [Project Requirments](#project-requirements)
-    - [Part 1. Main task](#part-1-main-task)
-    - [Part 2. Bonus. Scoring and game record](#part-2-bonus-scoring-and-game-record)
-    - [Part 3. Bonus. Level mechanics](#part-3-bonus-level-mechanics)
+   - [Project Requirments](#project-requirements)
+      - [Part 1. Main task](#part-1-main-task)
+      - [Part 2. Bonus. Scoring and game record](#part-2-bonus-scoring-and-game-record)
+      - [Part 3. Bonus. Level mechanics](#part-3-bonus-level-mechanics)
 
 ## Introduction
 
-The project must consist of two parts to implement the Tetris game: a library that implements the logic of the game, which can be connected to different GUIs in the future, and a terminal interface. The logic of the library must be implemented using finite-state machines, one of the possible descriptions of which is given below.
+The project must consist of two parts to implement the Tetris game: a library that implements the logic of the game, which can be connected to different GUIs in the future, and a terminal interface.
 
 ## Chapter I <div id="chapter-i"></div>
+
 # General information
+
 ### BrickGame
 
 BrickGame is a popular handheld console from the 90s with several ~~thousands~~ of built-in games developed in China. It was originally a copy of Tetris developed in the USSR and released by Nintendo as part of the GameBoy platform, but also included many other games that were added over time. The console had a small screen with a 10x20 playing field that was a matrix of "pixels". To the right of the field was a scoreboard with a digital display of the current game status, records, and other additional information. The most popular games on BrickGame were Tetris, Tanks, Racing, Frogger and Snake.
@@ -96,6 +99,7 @@ This FSM has the following states:
 - Game over is the end of the game.
 
 ## Chapter II <div id="chapter-ii"></div>
+
 ## Project Requirements
 
 ### Part 1. Main task
@@ -113,22 +117,24 @@ You need to implement the BrickGame v1.0 aka Tetris program:
 - Follow Google Style when writing code.
 - Prepare full coverage of the library with unit tests, using the `check` library (tests must run on Darwin/Ubuntu OS). The coverage of the library with game logic with tests must be at least 80 percent.
 - The following mechanics must be present in the game:
-  - Rotation of pieces;
-  - Horizontal movement of pieces;
-  - Acceleration of the piece's fall (when the button is pressed, the piece moves all the way down);
-  - Displaying the next piece;
-  - Destruction of filled rows;
-  - End of the game when the top of the board is reached;
-  - All types of pieces shown in the picture below must be included in the game.
+   - Rotation of pieces;
+   - Horizontal movement of pieces;
+   - Acceleration of the piece's fall (when the button is pressed, the piece moves all the way down);
+   - Displaying the next piece;
+   - Destruction of filled rows;
+   - End of the game when the top of the board is reached;
+   - All types of pieces shown in the picture below must be included in the game.
+
 - Add support for all buttons provided on the physical console for control:
-  - Start game,
-  - Pause,
-  - End game,
-  - Left arrow — move the piece to the left,
-  - Right arrow — move piece to the right,
-  - Down arrow — piece falls,
-  - Up arrow is not used in this game,
-  - Action (piece rotation).
+   - Start game,
+   - Pause,
+   - End game,
+   - Left arrow — move the piece to the left,
+   - Right arrow — move piece to the right,
+   - Down arrow — piece falls,
+   - Up arrow is not used in this game,
+   - Action (piece rotation).
+
 - The playing area must be the same size as the console's playing field — ten "pixels" wide and twenty "pixels" high.
 - When the figure reaches the lower boundary of the board or touches another figure, it must stop. After that, the next piece, shown in the preview, is generated.
 - The library interface must match the description in materials/library-specification.md.
