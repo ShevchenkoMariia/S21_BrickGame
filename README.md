@@ -1,8 +1,9 @@
 # BrickGame Tetris
 
-Summary: In this project, you need to implement the Tetris game in the C programming language using a structural approach.
+In this project, we will implement the Tetris game in the C programming language using a structural approach.
 
 The experience gained as a result of the project:
+
 - development of a library for implementing game logic with support for functions for processing user input and obtaining the state of the playing field;
 - implementation of a terminal interface for user interaction, including game control and information display;
 - applying the principles of structured programming to organize code and improve its readability and maintainability;
