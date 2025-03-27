@@ -2,6 +2,15 @@
 
 Summary: In this project, you need to implement the Tetris game in the C programming language using a structural approach.
 
+The experience gained as a result of the project:
+- development of a library for implementing game logic with support for functions for processing user input and obtaining the state of the playing field;
+- implementation of a terminal interface for user interaction, including game control and information display;
+- applying the principles of structured programming to organize code and improve its readability and maintainability;
+- creation of unit tests using the Check library, providing code coverage with at least 80 tests%;
+- implementation of game mechanics, such as rotating pieces, moving, destroying lines, and controlling the game state (start, pause, end, etc.);
+- development of algorithms for generating pieces, moving them, and interacting with the playing field;
+- setting up the Makefile for the build.
+
 # Contents
 
 - [BrickGameTetris](#brickgame-tetris)
